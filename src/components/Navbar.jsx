@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
-export default function Navbar({ onNavigate = () => {} }) {
+export default function Navbar({ onNavigate = () => { } }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
