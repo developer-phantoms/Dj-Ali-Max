@@ -100,20 +100,25 @@ function HomeView() {
         </div>
       </section>
 
-      <section ref={aboutRef} className="absolute inset-0 flex items-center justify-center bg-[#050505] p-6" id="about">
-        <div className="max-w-7xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <h2 className="text-4xl sm:text-7xl font-syncopate font-bold text-transparent bg-clip-text bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink" style={{ backgroundImage: 'linear-gradient(90deg, #00f0ff, #7000ff, #ff0055, #00f0ff)', backgroundSize: '200% 200%', animation: 'gradientShift 4s ease infinite', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-              WHO IS <br />ALI MAX?
+      <section ref={aboutRef} className="absolute inset-0 flex items-center justify-center bg-[#050505] p-6 sm:p-10" id="about">
+        <div className="max-w-7xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+          <div className="space-y-4 md:space-y-8 text-center md:text-left order-2 md:order-1">
+            <h2 className="text-3xl sm:text-5xl md:text-7xl font-syncopate font-bold text-transparent bg-clip-text bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink leading-tight" style={{ backgroundImage: 'linear-gradient(90deg, #00f0ff, #7000ff, #ff0055, #00f0ff)', backgroundSize: '200% 200%', animation: 'gradientShift 4s ease infinite', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+              WHO IS <br className="hidden md:block" />ALI MAX?
             </h2>
-            <p className="text-lg text-gray-400 leading-relaxed font-light">
+            <p className="text-sm sm:text-base md:text-lg text-gray-400 leading-relaxed font-light max-w-xl mx-auto md:mx-0">
               Renowned for electrifying arenas globally, DJ Ali Max transcends traditional sets. Every performance is an orchestrated journey through soundscapes of immersive bass and striking synths.
             </p>
-            <button className="bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink px-10 py-4 rounded-full text-white font-bold uppercase tracking-widest text-xs hover:shadow-[0_0_30px_rgba(255,0,85,0.6)] transform hover:-translate-y-1 transition-all duration-300">Discover More</button>
+            <div className="pt-2">
+              <button className="bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink px-8 py-3 md:px-12 md:py-4 rounded-full text-white font-bold uppercase tracking-widest text-[10px] sm:text-xs hover:shadow-[0_0_40px_rgba(255,0,85,0.7)] transform hover:-translate-y-1 transition-all duration-300">
+                Discover More
+              </button>
+            </div>
           </div>
-          <div className="relative">
-            <div className="w-full aspect-[4/5] glass rounded-3xl overflow-hidden relative border border-white/10">
-              <img src="/about-dj.png" alt="DJ Portrait" className="w-full h-full object-contain" />
+          <div className="relative order-1 md:order-2 flex justify-center items-center">
+            <div className="w-full max-w-[280px] sm:max-w-[340px] md:max-w-full aspect-[4/5] glass rounded-3xl overflow-hidden relative border border-white/10 shadow-2xl">
+              <img src="/about-dj.png" alt="DJ Portrait" className="w-full h-full object-cover md:object-contain" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
           </div>
         </div>
