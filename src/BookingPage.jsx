@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
-import { Mail, Phone, Calendar, MapPin, Music, Mic2, Star, Send } from 'lucide-react';
+import { Mail, Phone, Calendar, MapPin, Music, Mic2, Star, Send, ChevronDown } from 'lucide-react';
 
 export default function BookingPage({ onBackHome }) {
   const pageRef = useRef(null);
@@ -113,20 +113,42 @@ export default function BookingPage({ onBackHome }) {
                   </div>
                 </div>
                 <div>
-                  <label className="block text-xs uppercase font-bold text-gray-500 mb-2 ml-1">Event Location</label>
-                  <input required type="text" placeholder="City, Country" className="w-full glass bg-white/5 border border-white/10 px-6 py-4 rounded-xl focus:outline-none focus:border-neon-blue text-white transition-all font-medium" />
+                  <label className="block text-[10px] sm:text-xs uppercase font-bold text-gray-500 mb-2 ml-1">Event Location (City)</label>
+                  <div className="relative">
+                    <select required className="w-full glass bg-white/5 border border-white/10 px-4 py-3 sm:px-6 sm:py-4 rounded-xl focus:outline-none focus:border-neon-blue text-white text-xs sm:text-base transition-all font-medium appearance-none">
+                      <option value="" className="bg-black">Select City</option>
+                      <option value="karachi" className="bg-black">Karachi</option>
+                      <option value="lahore" className="bg-black">Lahore</option>
+                      <option value="islamabad" className="bg-black">Islamabad</option>
+                      <option value="faisalabad" className="bg-black">Faisalabad</option>
+                      <option value="rawalpindi" className="bg-black">Rawalpindi</option>
+                      <option value="peshawar" className="bg-black">Peshawar</option>
+                      <option value="multan" className="bg-black">Multan</option>
+                      <option value="quetta" className="bg-black">Quetta</option>
+                      <option value="sialkot" className="bg-black">Sialkot</option>
+                      <option value="hyderabad" className="bg-black">Hyderabad</option>
+                      <option value="other" className="bg-black">Other</option>
+                    </select>
+                    <ChevronDown className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" size={16} />
+                  </div>
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs uppercase font-bold text-gray-500 mb-2 ml-1">Event Type</label>
-                <select className="w-full glass bg-white/5 border border-white/10 px-6 py-4 rounded-xl focus:outline-none focus:border-neon-purple text-white transition-all font-medium appearance-none">
-                  <option value="club" className="bg-black">Club Night</option>
-                  <option value="festival" className="bg-black">Music Festival</option>
-                  <option value="private" className="bg-black">Private Event</option>
-                  <option value="wedding" className="bg-black">Luxury Wedding</option>
-                  <option value="other" className="bg-black">Other</option>
-                </select>
+                <label className="block text-[10px] sm:text-xs uppercase font-bold text-gray-500 mb-2 ml-1">Event Type</label>
+                <div className="relative">
+                  <select required className="w-full glass bg-white/5 border border-white/10 px-4 py-3 sm:px-6 sm:py-4 rounded-xl focus:outline-none focus:border-neon-purple text-white text-xs sm:text-base transition-all font-medium appearance-none">
+                    <option value="" className="bg-black">Select Event Type</option>
+                    <option value="club" className="bg-black">Club Night / Arena</option>
+                    <option value="festival" className="bg-black">Music Festival</option>
+                    <option value="corporate" className="bg-black">Corporate Event</option>
+                    <option value="wedding" className="bg-black">Luxury Wedding</option>
+                    <option value="concert" className="bg-black">Live Concert / Tour</option>
+                    <option value="private" className="bg-black">Private Party</option>
+                    <option value="other" className="bg-black">Other</option>
+                  </select>
+                  <ChevronDown className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" size={16} />
+                </div>
               </div>
 
               <div>

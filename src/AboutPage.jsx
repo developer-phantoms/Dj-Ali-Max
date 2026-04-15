@@ -13,7 +13,7 @@ const AnimatedCounter = ({ value, label, color, suffix = "" }) => {
   useEffect(() => {
     const target = parseInt(value);
     const obj = { val: 0 };
-    
+
     gsap.to(obj, {
       val: target,
       duration: 2,
@@ -60,15 +60,15 @@ export default function AboutPage({ onBackHome, onNavigate }) {
       });
 
       // Initial States
-      gsap.set([storyRef.current, expertiseRef.current, statsRef.current, ctaRef.current], { 
-        autoAlpha: 0, 
-        yPercent: 100 
+      gsap.set([storyRef.current, expertiseRef.current, statsRef.current, ctaRef.current], {
+        autoAlpha: 0,
+        yPercent: 100
       });
 
       // 1. Hero Out -> Story In
       tl.to(heroRef.current, { scale: 0.8, autoAlpha: 0, duration: 1 })
         .to(storyRef.current, { yPercent: 0, autoAlpha: 1, duration: 1, ease: 'power3.out' }, '<')
-        
+
         // 2. Story Out -> Expertise In
         .to(storyRef.current, { xPercent: -100, autoAlpha: 0, duration: 1 })
         .to(expertiseRef.current, { yPercent: 0, autoAlpha: 1, duration: 1, ease: 'power3.out' }, '<')
@@ -88,7 +88,7 @@ export default function AboutPage({ onBackHome, onNavigate }) {
 
   return (
     <div className="h-screen w-full relative overflow-hidden bg-black text-white font-outfit" ref={containerRef}>
-      
+
       {/* SECTION 1: HERO */}
       <section ref={heroRef} className="absolute inset-0 flex items-center justify-center p-4 sm:p-10 pt-20">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -105,7 +105,7 @@ export default function AboutPage({ onBackHome, onNavigate }) {
             </button>
           </div>
           <div className="relative glass rounded-[30px] sm:rounded-[40px] overflow-hidden border border-white/10 p-2 sm:p-4 shadow-[0_0_50px_rgba(112,0,255,0.2)] max-w-[300px] sm:max-w-none mx-auto">
-             <img src="/about-dj.png" alt="Ali Max" className="w-full h-auto object-cover rounded-[20px] sm:rounded-[32px]" />
+            <img src="/about-dj.png" alt="Ali Max" className="w-full h-auto object-cover rounded-[20px] sm:rounded-[32px]" />
           </div>
         </div>
       </section>
@@ -147,10 +147,10 @@ export default function AboutPage({ onBackHome, onNavigate }) {
       {/* SECTION 4: STATS */}
       <section ref={statsRef} className="absolute inset-0 flex items-center justify-center p-6 bg-[#030303]">
         <div className="max-w-7xl w-full mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
-           <AnimatedCounter value="500" suffix="+" label="GLOBAL SHOWS" color="text-neon-pink" />
-           <AnimatedCounter value="2" suffix="M+" label="LISTENERS" color="text-neon-blue" />
-           <AnimatedCounter value="45" suffix="+" label="COUNTRIES" color="text-neon-purple" />
-           <AnimatedCounter value="120" suffix="+" label="RELEASES" color="text-white" />
+          <AnimatedCounter value="500" suffix="+" label="GLOBAL SHOWS" color="text-neon-pink" />
+          <AnimatedCounter value="2" suffix="M+" label="LISTENERS" color="text-neon-blue" />
+          <AnimatedCounter value="45" suffix="+" label="COUNTRIES" color="text-neon-purple" />
+          <AnimatedCounter value="120" suffix="+" label="RELEASES" color="text-white" />
         </div>
       </section>
 
@@ -161,25 +161,25 @@ export default function AboutPage({ onBackHome, onNavigate }) {
             READY FOR <br className="hidden sm:block" /> THE BEAT?
           </h2>
           <div className="flex flex-col sm:flex-row gap-6 md:gap-8 justify-center items-center">
-            <button 
-              onClick={() => onNavigate('book')} 
+            <button
+              onClick={() => onNavigate('book')}
               className="relative group overflow-hidden px-10 py-4 sm:px-16 sm:py-6 rounded-full font-syncopate font-black text-[10px] sm:text-sm tracking-[0.2em] transition-all duration-500 hover:scale-110 active:scale-95"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink animate-gradientShift" style={{ backgroundSize: '200% auto' }}></div>
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-white/20"></div>
               <div className="absolute -inset-1 bg-gradient-to-r from-neon-blue to-neon-pink blur-xl opacity-40 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
+
               <span className="relative z-10 text-white">BOOK NOW</span>
             </button>
 
             <div className="flex flex-col gap-1 items-center">
-               <span className="text-gray-500 text-[8px] sm:text-[10px] uppercase font-bold tracking-widest">Connect with pulse</span>
-               <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-pink to-neon-purple font-black tracking-widest text-[10px] sm:text-sm uppercase">@ALI_MAX</span>
+              <span className="text-gray-500 text-[8px] sm:text-[10px] uppercase font-bold tracking-widest">Connect with pulse</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-pink to-neon-purple font-black tracking-widest text-[10px] sm:text-sm uppercase">@ALI_MAX</span>
             </div>
           </div>
         </div>
         <div className="absolute bottom-4 sm:bottom-0 w-full">
-           <Footer />
+          <Footer />
         </div>
       </section>
 

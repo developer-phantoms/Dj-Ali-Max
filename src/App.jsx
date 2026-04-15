@@ -224,8 +224,8 @@ function App() {
       <main key={page} className="min-h-screen">
         {page === 'home' && <HomeView />}
         {page === 'about' && <AboutPage onBackHome={() => setPage('home')} onNavigate={handleNavigate} />}
-        {page === 'gallery' && <GalleryPage onBackHome={() => setPage('home')} />}
-        {page === 'book' && <BookingPage onBackHome={() => setPage('home')} />}
+        {page === 'gallery' && <GalleryPage onBackHome={() => setPage('home')} onNavigate={handleNavigate} />}
+        {page === 'book' && <BookingPage onBackHome={() => handleNavigate('home')} />}
       </main>
     </div>
   );
