@@ -16,6 +16,7 @@ function HomeView() {
   const aboutRef = useRef(null);
   const servicesRef = useRef(null);
   const galleryRef = useRef(null);
+  const galleryTrackRef = useRef(null);
   const contactRef = useRef(null);
 
   const galleryItems = [1, 2, 3, 4, 5];
@@ -25,16 +26,16 @@ function HomeView() {
       scrollTrigger: {
         trigger: containerRef.current,
         start: 'top top',
-        end: '+=5000',
+        end: '+=6000',
         scrub: 1,
         pin: true,
         anticipatePin: 1,
       }
     });
 
+    gsap.set(heroRef.current, { autoAlpha: 1 });
     gsap.set(aboutRef.current, { xPercent: 100, autoAlpha: 0 });
     gsap.set(servicesRef.current, { yPercent: 100, autoAlpha: 0 });
-    gsap.set('.gallery-track', { xPercent: 0 });
     gsap.set(galleryRef.current, { autoAlpha: 0, scale: 0.8 });
     gsap.set(contactRef.current, { autoAlpha: 0, yPercent: 50 });
 
@@ -62,12 +63,16 @@ function HomeView() {
       .to(servicesRef.current, { yPercent: 0, autoAlpha: 1, duration: 1, ease: 'power3.out' }, '<')
       .to(servicesRef.current, { scale: 1.5, autoAlpha: 0, duration: 1 })
       .to(galleryRef.current, { autoAlpha: 1, scale: 1, duration: 1, ease: 'power3.out' }, '<')
-      .to('.gallery-track', { xPercent: -50, duration: 2, ease: 'none' })
+      .to(galleryTrackRef.current, { 
+        xPercent: -75,
+        duration: 3, 
+        ease: 'none' 
+      })
       .to(galleryRef.current, { autoAlpha: 0, duration: 1 })
       .to(contactRef.current, { autoAlpha: 1, yPercent: 0, duration: 1, ease: 'power3.out' }, '<');
 
     return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      if (tl) tl.kill();
     };
   }, []);
 
@@ -143,10 +148,10 @@ function HomeView() {
         </div>
       </section>
 
-      <section ref={galleryRef} className="absolute inset-0 flex flex-col justify-center bg-[#030303] p-6" id="gallery">
-        <h2 className="px-6 text-4xl sm:text-6xl font-syncopate font-bold text-transparent bg-clip-text bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink mb-12 uppercase" style={{ backgroundImage: 'linear-gradient(90deg, #00f0ff, #7000ff, #ff0055, #00f0ff)', backgroundSize: '200% 200%', animation: 'gradientShift 4s ease infinite', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>VISUAL IMPACT</h2>
+      <section ref={galleryRef} className="absolute inset-0 flex flex-col justify-center bg-[#030303] p-0 overflow-hidden" id="gallery">
+        <h2 className="px-6 sm:px-12 text-3xl sm:text-6xl font-syncopate font-bold text-transparent bg-clip-text bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink mb-6 sm:mb-12 uppercase" style={{ backgroundImage: 'linear-gradient(90deg, #00f0ff, #7000ff, #ff0055, #00f0ff)', backgroundSize: '200% 200%', animation: 'gradientShift 4s ease infinite', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>VISUAL IMPACT</h2>
         <div className="w-full overflow-visible">
-          <div className="flex gap-8 gallery-track px-6 w-[200vw]" style={{ width: 'max-content' }}>
+          <div ref={galleryTrackRef} className="flex gap-4 sm:gap-8 gallery-track px-6 sm:px-12" style={{ width: 'max-content' }}>
             {galleryItems.map((item) => {
               const galleryLinks = {
                 1: "https://youtu.be/roKh91nyATU?si=U_ITbzvUGEwKXQql",
@@ -178,17 +183,17 @@ function HomeView() {
         </div>
       </section>
 
-      <section ref={contactRef} className="absolute inset-0 flex items-center justify-center bg-black/90 p-6" id="book">
-        <div className="max-w-4xl w-full mx-auto text-center">
-          <h2 className="text-5xl sm:text-8xl font-syncopate font-black text-transparent bg-clip-text bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink mb-8 uppercase" style={{ backgroundImage: 'linear-gradient(90deg, #00f0ff, #7000ff, #ff0055, #00f0ff)', backgroundSize: '200% 200%', animation: 'gradientShift 4s ease infinite', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+      <section ref={contactRef} className="absolute inset-0 flex items-center justify-center bg-black/90 p-4 sm:p-6" id="book">
+        <div className="max-w-4xl w-full mx-auto text-center overflow-y-auto max-h-full py-8">
+          <h2 className="text-4xl sm:text-6xl md:text-8xl font-syncopate font-black text-transparent bg-clip-text bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink mb-4 sm:mb-8 uppercase" style={{ backgroundImage: 'linear-gradient(90deg, #00f0ff, #7000ff, #ff0055, #00f0ff)', backgroundSize: '200% 200%', animation: 'gradientShift 4s ease infinite', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
             BOOK NOW
           </h2>
-          <p className="text-xl text-gray-400 mb-12 font-light">Secure DJ ALI MAX for your next legendary event.</p>
-          <form className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left" onSubmit={(e) => e.preventDefault()}>
-            <input type="text" placeholder="Full Name" className="glass w-full px-6 py-4 rounded-xl focus:border-neon-pink text-white" />
-            <input type="email" placeholder="Email Address" className="glass w-full px-6 py-4 rounded-xl focus:border-neon-pink text-white" />
-            <input type="date" className="glass w-full px-6 py-4 rounded-xl focus:border-neon-pink text-white md:col-span-2 cursor-pointer" style={{ colorScheme: 'dark' }} />
-            <button className="md:col-span-2 bg-gradient-to-r from-neon-pink to-neon-purple text-white font-bold text-xl py-5 rounded-xl hover:shadow-[0_0_30px_rgba(255,0,85,0.4)] transition-all transform hover:-translate-y-1 mt-4 uppercase font-syncopate">
+          <p className="text-base sm:text-xl text-gray-400 mb-6 sm:mb-12 font-light">Secure DJ ALI MAX for your next legendary event.</p>
+          <form className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 text-left" onSubmit={(e) => e.preventDefault()}>
+            <input type="text" placeholder="Full Name" className="glass w-full px-5 py-3 sm:px-6 sm:py-4 rounded-xl focus:border-neon-pink text-white text-sm sm:text-base" />
+            <input type="email" placeholder="Email Address" className="glass w-full px-5 py-3 sm:px-6 sm:py-4 rounded-xl focus:border-neon-pink text-white text-sm sm:text-base" />
+            <input type="date" className="glass w-full px-5 py-3 sm:px-6 sm:py-4 rounded-xl focus:border-neon-pink text-white md:col-span-2 cursor-pointer text-sm sm:text-base" style={{ colorScheme: 'dark' }} />
+            <button className="md:col-span-2 bg-gradient-to-r from-neon-pink to-neon-purple text-white font-bold text-lg sm:text-xl py-4 sm:py-5 rounded-xl hover:shadow-[0_0_30px_rgba(255,0,85,0.4)] transition-all transform hover:-translate-y-1 mt-2 sm:mt-4 uppercase font-syncopate">
               SUBMIT REQUEST
             </button>
           </form>
